@@ -1,0 +1,594 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title> MANDAL PROJECT </title>
+
+<!-- import external .js scripts here -->
+
+<!-- <script type="text/javascript" src="#" ></script> -->
+<!-- modify CSS properties here -->
+
+<style type="text/css">
+body,td,th {
+font-family: Monaco, "Courier New", "monospace";
+font-size: 14px;
+color: rgba(255,255,255,1);
+}
+
+body {
+background-color: rgba(0,0,0,1);
+}
+
+#container {
+position: relative;
+text-align: left;
+width: 95%;
+height: 800px;
+}
+
+#fmxCanvas {
+position: relative;
+background-color:rgba(255,255,255,1);
+border: rgba(255,255,255,1) thin dashed;
+margin: 10px;
+cursor: crosshair;
+display: inline-block;
+}
+
+</style>
+
+</head>
+	
+<body>
+
+<div id="container">
+<!-- START HTML CODE HERE -->
+
+<canvas id="fmxCanvas" width="800" height="800"></canvas>
+
+<div id="display"></div>
+
+	<img src = "Bert.png" id = "img1" />
+	<img src = "bigbird.png" id = "img2" />
+	<img src = "bunny.png" id = "img3" />
+	<img src = "card.png" id = "img4" />
+	<img src = "cookiemonster.png" id = "img5" />
+	<img src = "elmo.png" id = "img6" />
+	<img src = "ernie.png" id = "img7" />
+	<img src = "skull.png" id = "img8" />
+	<img src = "ukulele.png" id = "img9" />
+	<img src = "yoda.png" id = "img10" />
+	
+<br><br>
+
+Add your personal notes or additional information here
+<!-- FINISH HTML CODE HERE -->
+</div>
+
+<script>
+
+///////////////////////////////////////////////////////////////////////
+// DECLARE requestAnimFrame
+
+var rAF = window.requestAnimFrame ||
+window.mozRequestAnimFrame ||
+window.webkitRequestAnimFrame ||
+window.msRequestAnimFrame;
+
+var fps = 30;
+
+window.requestAnimFrame = (
+
+function(callback) {
+
+return rAF ||
+
+function(callback) {
+window.setTimeout(callback, 1000 / fps);
+};
+
+})();
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE GLOBAL VARIABLES HERE
+
+var canvas;
+var ctx;
+canvas = document.getElementById("fmxCanvas");
+ctx = canvas.getContext("2d");
+
+var canvas1;
+var ctx1;
+canvas1 = document.createElement("canvas");
+ctx1 = canvas1.getContext("2d");
+
+canvas1.width = canvas.width;
+canvas1.height = canvas.height;
+
+var canvas2;
+var ctx2;
+canvas2 = document.createElement("canvas");
+ctx2 = canvas2.getContext("2d");
+
+canvas2.width = canvas.width;
+canvas2.height = canvas.height;
+	
+var canvas3;
+var ctx3;
+canvas3 = document.createElement("canvas");
+ctx3 = canvas3.getContext("2d");
+
+canvas3.width = canvas.width;
+canvas3.height = canvas.height;
+
+var display;
+display = document.getElementById('display');
+
+var counter;
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE YOUR GLOBAL VARIABLES HERE
+	
+	var img1, img2, img3, img5, img5, img6, img7, img8, img9, img10;
+	
+img1 = new Image();
+	img1 = document.getElementById('img1');
+img2 = new Image();
+	img2 = document.getElementById('img2');
+img3 = new Image();
+	img3 = document.getElementById('img3');
+img4 = new Image();
+	img4 = document.getElementById('img4');
+img5 = new Image();
+	img5 = document.getElementById('img5');
+img6 = new Image();
+	img6 = document.getElementById('img6');
+img7 = new Image();
+	img7 = document.getElementById('img7');
+img8 = new Image();
+	img8 = document.getElementById('img8');
+img9 = new Image();
+	img9 = document.getElementById('img9');
+img10 = new Image();
+	img10 = document.getElementById('img10');
+
+///////////////////////////////////////////////////////////////////////
+// CALL THE EVENT LISTENERS
+
+window.addEventListener("load", setup, false);
+//////////////////////////////////////////////////////////////////////
+// ADD EVENT LISTENERS
+
+canvas.addEventListener("mousemove", mousePos, false);
+
+//////////////////////////////////////////////////////////////////////
+// MOUSE COORDINATES
+
+var stage, mouseX, mouseY;
+
+function mousePos(event) {
+stage = canvas.getBoundingClientRect();
+mouseX = event.clientX - stage.left;
+mouseY = event.clientY - stage.top;
+}
+
+/////////////////////////////////////////////////////////////////////
+// INITIALIZE THE STARTING FUNCTION
+
+function setup() {
+
+/////////////////////////////////////////////////////////////////////
+// DECLARE STARTING VALUES OF GLOBAL VARIABLES
+
+counter = 0;
+mouseX = canvas.width/2;
+mouseY = canvas.height/2;
+
+/////////////////////////////////////////////////////////////////////
+// CALL SUBSEQUENT FUNCTIONS, as many as you need
+
+clear(); // COVER TRANSPARENT CANVAS OR CLEAR CANVAS
+
+draw(); // THIS IS WHERE EVERYTHING HAPPENS
+
+}
+
+////////////////////////////////////////////////////////////////////
+// CLEAR THE CANVAS FOR ANIMATION
+// USE THIS AREA TO MODIFY BKGD
+
+function clear() {
+
+ctx.clearRect(0,0,canvas.width, canvas.height);
+//ctx1.clearRect(0,0,canvas.width, canvas.height);
+ctx2.clearRect(0,0,canvas.width, canvas.height);
+//ctx3.clearRect(0,0,canvas.width, canvas.height);
+
+// clear additional ctxs here if you have more than canvas1
+
+}
+
+////////////////////////////////////////////////////////////////////
+// THIS IS WHERE EVERYTHING HAPPENS
+
+function draw() {
+
+counter += 0.1; // EASIER FOR SINE COSINE FUNCTIONS
+
+if (counter > Math.PI*200) { counter = 0; } // RESET COUNTER
+
+clear(); // USE THIS TO REFRESH THE FRAME AND CLEAR CANVAS
+
+////////////////////////////////////////////////////////////////////
+// >>>START HERE>>>START HERE>>>START HERE>>>START HERE>>>START HERE
+
+ 
+/*
+filter: blur(5px);
+filter: brightness(0.4);
+filter: contrast(200%);
+filter: drop-shadow(16px 16px 20px blue);
+filter: grayscale(50%);
+filter: hue-rotate(90deg);
+filter: invert(75%);
+filter: opacity(25%);
+filter: saturate(30%);
+filter: sepia(60%);
+*/ 
+
+////BACKGROUND
+var bkgdgrd = ctx.createRadialGradient(mouseX,mouseY,50,mouseX,mouseY,800);
+	bkgdgrd.addColorStop(0,"yellow");
+	bkgdgrd.addColorStop(0.25,"red");
+	bkgdgrd.addColorStop(0.5,"magenta");
+	bkgdgrd.addColorStop(0.75,"orange");
+	bkgdgrd.addColorStop(1,"cyan");
+	
+ctx.beginPath();
+	
+	ctx.rect(0,0,canvas.width,canvas.height);
+	
+ctx.closePath();
+	
+ctx.fillStyle = bkgdgrd;
+	
+ctx.fill();
+
+	
+////UKULELE
+	
+var gs = mouseX/canvas.width/100;
+	
+var hr = mouseX/canvas.width*counter*360;
+	
+ctx1.save();
+	
+	ctx1.translate(0,0);
+	ctx1.scale(0.675,0.675);
+	ctx1.filter = 'hue-rotate('+hr+'deg)';
+	ctx1.rotate(counter);
+	ctx1.drawImage(img9,-counter,-counter);
+	
+ctx1.restore();
+ 
+	
+ctx1.save();
+	
+	ctx1.translate(canvas.width,canvas.height);
+	ctx1.scale(0.675,0.675);
+	ctx1.filter = 'hue-rotate('+(-hr)+'deg)';
+	ctx1.rotate(counter);
+	ctx1.drawImage(img9,-counter,-counter);
+	
+ctx1.restore();
+
+	
+ctx1.save();
+	
+	ctx1.translate(canvas.width,0); 
+	ctx1.scale(0.675,0.675);
+	ctx1.filter = 'invert(100%) hue-rotate('+(+hr)+'deg)';
+	ctx1.rotate(counter);
+	ctx1.drawImage(img9,-counter,-counter);
+	
+ctx1.restore();
+ 
+	
+ctx1.save();
+	
+	ctx1.translate(0,canvas.height);
+	ctx1.scale(0.675,0.675);
+	ctx1.filter = 'invert(100%) hue-rotate('+(+hr)+'deg)';
+	ctx1.rotate(counter);
+	ctx1.drawImage(img9,-counter,-counter);
+	
+	
+ctx1.restore();
+	
+ctx.drawImage(canvas1,0,0);
+	
+////BERT
+
+ctx3.save();
+	
+	ctx3.translate(canvas.width/3,canvas.height/3);
+	ctx3.scale(0.27,0.35);
+	ctx3.globalAlpha = 0.6;
+	ctx3.rotate(counter-20);
+	ctx3.drawImage(img1,110,20);
+	
+ctx3.restore();
+	
+ctx3.save();
+	
+	ctx3.translate(canvas.width/1.4,canvas.height/1.4);
+	ctx3.filter = 'hue-rotate('+(+hr)+'deg)';
+	ctx3.scale(0.27,0.35);
+	ctx3.globalAlpha = 0.6;
+	ctx3.rotate(counter-20);
+	ctx3.drawImage(img1,110,20);
+	
+ctx3.restore();
+	
+ctx.drawImage(canvas3,0,0);
+	
+
+////UNO CARD
+var amount4 = 25;
+	
+for (var l=0; l<amount4; l++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx3.filter = 'hue-rotate('+(+hr)+'deg)';
+	ctx.scale(0.5,0.5);
+	ctx.globalAlpha = 0.4;
+	ctx.rotate(l/amount4 * Math.PI * 2 + counter/10);
+	ctx.drawImage(img4,550,550);
+	
+ctx.restore();
+ 
+}	
+
+var amount3 = 20;
+	
+for (var k=0; k<amount3; k++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.scale(0.4,0.4);
+	ctx.globalAlpha = 0.5;
+	ctx.rotate(k/amount3 * Math.PI * 2 + counter/10);
+	ctx.drawImage(img4,500,500);
+	
+ctx.restore();
+ 
+}	
+	
+var amount2 = 15;
+	
+for (var j=0; j<amount2; j++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.scale(0.3,0.3);
+	ctx.globalAlpha = 0.6;
+	ctx.rotate(j/amount2 * Math.PI * 2 + counter/10);
+	ctx.drawImage(img4,473,473);
+	
+ctx.restore();
+ 
+}
+
+var amount1 = 10;
+	
+for (var i=0; i<amount1; i++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.scale(0.2,0.2);
+	ctx.globalAlpha = 0.7;
+	ctx.rotate(i/amount1 * Math.PI * 2 + counter/10);
+	ctx.drawImage(img4,472,472);
+	
+ctx.restore();
+ 
+}
+	
+////BIGBIRD
+var amount9 = 50;
+	
+for (var p=0; p<amount9; p++) {
+ 
+ctx.save();
+	
+	ctx.translate(260,630);
+	ctx.globalAlpha = 0.65;
+	ctx.scale(0.2,0.2);
+	ctx.rotate(p/amount9 * Math.PI * 2 + counter/10);
+	ctx.drawImage(img2,-100,-20);
+	
+ctx.restore();
+	
+}
+	
+var amount10 = 50;
+	
+for (var q=0; q<amount10; q++) {
+ 
+ctx.save();
+	
+	ctx.translate(590,200);
+	ctx.scale(0.2,0.2);
+	ctx.globalAlpha = 0.65;
+	ctx.rotate(q/amount10 * Math.PI * 2 + counter/10);
+	ctx.drawImage(img2,-100,-20);
+	
+ctx.restore();
+	
+}
+	
+////COOKIE MONSTER	
+var radc = Math.cos(counter/10) * canvas.width/2;
+ 
+var amount8 = 5;
+	
+for (var o=0; o<amount8; o++) {
+ 
+ctx2.save();
+	
+ctx2.translate(canvas.width/2 , canvas.height/2);
+ctx2.scale(0.4,0.4)
+ctx2.filter = 'hue-rotate(55deg)'
+ctx2.rotate(o/amount8 * Math.PI * 2 + counter/8);
+ctx2.globalAlpha = 1;
+ctx2.drawImage(img5,-400 +radc, -44+radc);
+	
+ctx2.restore();
+ 
+}
+var amountctx2 = 8;
+	
+for (var l=0; l<amountctx2; l++) {
+	
+ctx.save();
+	
+ctx.translate(canvas.width/2, canvas.height/2);
+ctx.scale(0.5,0.5);
+ctx.rotate(Math.PI * 2 * l/amountctx2 + counter/10);
+ctx.drawImage(canvas2,60,150);
+
+ctx.restore();
+	
+}
+	
+////SKULL
+	
+var amount5 = 8;
+	
+for (var m=0; m<amount5; m++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2, canvas.height/2);
+	ctx.globalAlpha = 0.85;
+	ctx.scale(0.5,0.5)
+	ctx.rotate(m/amount5 * Math.PI * 2 - counter/10);
+	ctx.drawImage(img8,mouseX/2,mouseY/2);
+	
+ctx.restore();
+ 
+}
+
+////BUNNY
+var rad = Math.sin(counter/10) * canvas.width/2;
+ 
+var amount6 = 7;
+	
+for (var n=0; n<amount6; n++) {
+ 
+ctx.save();
+	
+ctx.translate(canvas.width/2 , canvas.height/2);
+ctx.scale(0.4,0.4);
+ctx.rotate(n/amount6 * Math.PI * 2 - counter/10);
+ctx.globalAlpha = 0.85;
+ctx.drawImage(img3,-400 +rad, -44+rad);
+	
+ctx.restore();
+ 
+}
+	
+////ERNIE
+	
+var amount10 = 6;
+	
+for (var q=0; q<amount10; q++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2, 2*Math.PI+canvas.height/2);
+	ctx.scale(0.6,0.6);
+	ctx.globalAlpha = 0.75;
+	ctx.rotate(q/amount10 * Math.PI * 2 + counter/3);
+	ctx.drawImage(img7,-176,36);
+	
+ctx.restore();
+ 
+}
+
+////ELMO
+	
+var amount11 = 10;
+	
+for (var u=0; u<amount11; u++) {
+ 
+ctx.save();
+	
+	ctx.translate(mouseX,mouseY);
+	ctx.filter = 'hue-rotate('+(+hr)+'deg)';
+	ctx.scale(0.25,0.25);
+	ctx.globalAlpha = 0.75;
+	ctx.rotate(u/amount11 * Math.PI * 2 + counter/3);
+	ctx.drawImage(img6,127,176);
+	
+ctx.restore();
+ 
+}
+	
+////YODA
+	
+ctx.save();
+	
+	ctx.translate(mouseX,mouseY);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(img10,-210,-190);
+	
+ctx.restore();
+ 	
+ 
+
+ 
+
+ 
+
+ 
+
+// <<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE
+///////////////////////////////////////////////////////////////////
+
+// CREDITS
+
+ctx.save();
+var credits = "Christian Carranza, Childish Trip, FMX 310, SP 2022";
+ctx.font = 'bold 12px Helvetica';
+ctx.fillStyle = "rgba(0,0,0,1)"; // change the color here
+ctx.shadowColor = "rgba(255,255,255,1)"; // change shadow color here
+ctx.shadowBlur = 12;
+ctx.shadowOffsetX = 2;
+ctx.shadowOffsetY = 2;
+ctx.fillText(credits, 10, canvas.height - 10); // CHANGE THE LOCATION HERE
+ctx.restore();
+
+//////////////////////////////////////////////////////////////////
+// HTML DISPLAY FIELD FOR TESTING PURPOSES
+
+display.innerHTML = Math.round(mouseX) + " || " + Math.round(mouseY) + " || counter = " + Math.round(counter);
+
+/////////////////////////////////////////////////////////////////
+// LAST LINE CREATES THE ANIMATION
+
+requestAnimFrame(draw); // CALLS draw() every nth of a second
+
+}
+
+</script>
+
+</body>
+</html>
