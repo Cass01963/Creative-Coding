@@ -1,0 +1,485 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title> ETERNAL MOTION PROJECT </title>
+
+<!-- import external .js scripts here -->
+
+<!-- <script type="text/javascript" src="#" ></script> -->
+<!-- modify CSS properties here -->
+
+<style type="text/css">
+body,td,th {
+font-family: Monaco, "Courier New", "monospace";
+font-size: 14px;
+color: rgba(255,255,255,1);
+}
+
+body {
+background-color: rgba(0,0,0,1);
+}
+
+#container {
+position: relative;
+text-align: left;
+width: 95%;
+height: 800px;
+}
+
+#fmxCanvas {
+position: relative;
+background-color:rgba(255,255,255,1);
+border: rgba(255,255,255,1) thin dashed;
+margin: 10px;
+cursor: crosshair;
+display: inline-block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+<!-- START HTML CODE HERE -->
+
+<canvas id="fmxCanvas" width="1000" height="1000"></canvas>
+
+<div id="display"></div>
+
+<br><br>
+
+<img src="PNG/lelbow.png" id="lelbow" />
+<img src="PNG/body.png" id="body" />
+<img src="PNG/lhand.png" id="lhand" />
+<img src="PNG/face.png" id="face" />
+<img src="PNG/lfoot.png" id="lfoot" />
+<img src="PNG/lleg2.png" id="lleg2" />
+<img src="PNG/lleg1.png" id="lleg1" />
+<img src="PNG/rfoot.png" id="rfoot" />
+<img src="PNG/rleg.png" id="rleg" />
+<img src="PNG/rarm.png" id="rarm" />
+<img src="PNG/relbow.png" id="relbow" />
+<img src="PNG/rhand.png" id="rhand" />
+	
+	
+	
+	
+<!-- FINISH HTML CODE HERE -->
+</div>
+
+<script>
+
+///////////////////////////////////////////////////////////////////////
+// DECLARE requestAnimFrame
+
+var rAF = window.requestAnimFrame ||
+window.mozRequestAnimFrame ||
+window.webkitRequestAnimFrame ||
+window.msRequestAnimFrame;
+
+var fps = 30;
+
+window.requestAnimFrame = (
+
+function(callback) {
+
+return rAF ||
+
+function(callback) {
+window.setTimeout(callback, 1000 / fps);
+};
+
+})();
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE GLOBAL VARIABLES HERE
+
+var canvas;
+var ctx;
+canvas = document.getElementById("fmxCanvas");
+ctx = canvas.getContext("2d");
+
+var canvas1;
+var ctx1;
+canvas1 = document.createElement("canvas");
+ctx1 = canvas1.getContext("2d");
+
+canvas1.width = canvas.width;
+canvas1.height = canvas.height;
+
+var canvas2;
+var ctx2;
+canvas2 = document.createElement("canvas");
+ctx2 = canvas2.getContext("2d");
+
+canvas2.width = canvas.width;
+canvas2.height = canvas.height;
+	
+	
+var canvas3;
+var ctx3;
+canvas3 = document.createElement("canvas");
+ctx3 = canvas3.getContext("2d");
+
+canvas3.width = canvas.width;
+canvas3.height = canvas.height;	
+	
+var canvas4;
+var ctx4;
+canvas4 = document.createElement("canvas");
+ctx4 = canvas4.getContext("2d");
+
+canvas4.width = canvas.width;
+canvas4.height = canvas.height;
+	
+var canvas5;
+var ctx5;
+canvas5 = document.createElement("canvas");
+ctx5 = canvas5.getContext("2d");
+
+canvas5.width = canvas.width;
+canvas5.height = canvas.height;
+	
+	
+	
+	
+var display;
+display = document.getElementById('display');
+
+var counter;
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE YOUR GLOBAL VARIABLES HERE
+	
+var lelbow = new Image();
+	lelbow = document.getElementById('lelbow');
+	
+var body = new Image();
+	body = document.getElementById('body');
+	
+var lhand = new Image();
+	lhand = document.getElementById('lhand');
+	
+var face = new Image();
+	face = document.getElementById('face');
+	
+var lfoot = new Image();
+	lfoot = document.getElementById('lfoot');
+	
+var lleg2 = new Image();
+	lleg2 = document.getElementById('lleg2');
+	
+var lleg1 = new Image();
+	lleg1 = document.getElementById('lleg1');
+	
+var rfoot = new Image();
+	rfoot = document.getElementById('rfoot');
+	
+var rleg = new Image();
+	rleg = document.getElementById('rleg');
+	
+var rarm = new Image();
+	rarm = document.getElementById('rarm');
+	
+var relbow = new Image();
+	relbow = document.getElementById('relbow');
+	
+var rhand = new Image();
+	rhand = document.getElementById('rhand');
+
+
+///////////////////////////////////////////////////////////////////////
+// CALL THE EVENT LISTENERS
+
+window.addEventListener("load", setup, false);
+//////////////////////////////////////////////////////////////////////
+// ADD EVENT LISTENERS
+
+canvas.addEventListener("mousemove", mousePos, false);
+
+//////////////////////////////////////////////////////////////////////
+// MOUSE COORDINATES
+
+var stage, mouseX, mouseY;
+
+function mousePos(event) {
+stage = canvas.getBoundingClientRect();
+mouseX = event.clientX - stage.left;
+mouseY = event.clientY - stage.top;
+}
+
+/////////////////////////////////////////////////////////////////////
+// INITIALIZE THE STARTING FUNCTION
+
+function setup() {
+
+/////////////////////////////////////////////////////////////////////
+// DECLARE STARTING VALUES OF GLOBAL VARIABLES
+
+counter = 0;
+mouseX = canvas.width/2;
+mouseY = canvas.height/2;
+
+/////////////////////////////////////////////////////////////////////
+// CALL SUBSEQUENT FUNCTIONS, as many as you need
+
+clear(); // COVER TRANSPARENT CANVAS OR CLEAR CANVAS
+
+draw(); // THIS IS WHERE EVERYTHING HAPPENS
+
+}
+
+////////////////////////////////////////////////////////////////////
+// CLEAR THE CANVAS FOR ANIMATION
+// USE THIS AREA TO MODIFY BKGD
+
+function clear() {
+
+ctx.clearRect(0,0,canvas.width, canvas.height);
+ctx1.clearRect(0,0,canvas.width, canvas.height);
+ctx2.clearRect(0,0,canvas.width, canvas.height);
+ctx3.clearRect(0,0,canvas.width, canvas.height);
+ctx4.clearRect(0,0,canvas.width, canvas.height);
+ctx5.clearRect(0,0,canvas.width, canvas.height);
+
+// clear additional ctxs here if you have more than canvas1
+
+}
+
+////////////////////////////////////////////////////////////////////
+// THIS IS WHERE EVERYTHING HAPPENS
+
+function draw() {
+
+counter += 0.1; // EASIER FOR SINE COSINE FUNCTIONS
+
+if (counter > Math.PI*200) { counter = 0; } // RESET COUNTER
+
+clear(); // USE THIS TO REFRESH THE FRAME AND CLEAR CANVAS
+
+////////////////////////////////////////////////////////////////////
+// >>>START HERE>>>START HERE>>>START HERE>>>START HERE>>>START HERE
+
+////BLACK BACKDROP
+	
+ctx.beginPath();
+	
+	ctx.rect(0,0,canvas.width,canvas.height);
+	
+ctx.closePath();
+	
+ctx.fillStyle = "black";
+	
+ctx.fill();
+	
+	
+	
+////MOVING BACKGROUNG	
+var amount = 150;
+
+for (var angle=0; angle<amount; angle+=0.1) {
+ 
+var sine, cosine;
+	
+sine = Math.sin(counter*angle/450); // counter is the angle
+cosine = Math.cos(angle/5);
+ 
+var rr,gg,bb;
+	
+rr = Math.round(Math.abs(sine)*255);
+gg = Math.round(Math.abs(cosine)*255);
+bb = 255 - Math.round(Math.abs(sine)*255);
+	
+var mycolor = "rgba("+rr+", "+gg+", "+bb+", 1)"	
+		
+var radh, radv;
+	
+radh = 350; //horizantal amplitude
+radv = 375; //vertical amplitude
+	
+rad = 80 + Math.abs(sine*100)	
+	
+var x, y;
+	
+x = canvas.width/2 + sine*radh;
+y = canvas.height/2 + cosine*radv;
+	
+ctx5.beginPath();
+	
+	ctx5.arc(x,y,rad-50,0,2*Math.PI);
+	ctx5.arc(y,x,rad/15,0,2*Math.PI);
+	
+ctx5.closePath();
+	
+	ctx5.fillStyle = mycolor;
+	//ctx.strokeStyle = mycolor;
+	//ctx1.lineWidth = 0.1;
+	ctx5.fill();
+	//ctx.stroke();
+
+}
+
+ ctx.save();
+	
+	ctx.scale(0.5,0.5);
+	ctx.drawImage(canvas5,0,0)
+	ctx.drawImage(canvas5,1000,0)
+	ctx.drawImage(canvas5,453,4)
+	ctx.drawImage(canvas5,0,1000)
+	ctx.drawImage(canvas5,1000,1000)
+	//ctx.drawImage(canvas1,536,419)
+	ctx.drawImage(canvas5,4,400)
+	ctx.drawImage(canvas5,1000,434)
+	ctx.drawImage(canvas5,1000,793)
+	ctx.drawImage(canvas5,0,734)
+	ctx.drawImage(canvas5,0,1000)
+	ctx.drawImage(canvas5,1000,1000)
+	ctx.drawImage(canvas5,490,1000)
+	ctx.drawImage(canvas5,500,500)
+	
+ctx.restore();	
+
+	
+////BMO	
+
+var sine1, cosine1;
+sine1 = Math.sin(counter*7);
+cosine1 = Math.cos(counter*7);
+
+///Right Arm
+	
+ctx.save();
+	ctx.translate(775,689);
+	ctx.rotate(Math.PI*cosine1/50);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(rarm,-55,-113);	
+ctx.restore();
+		
+ctx2.drawImage(relbow, 90.5,112);	
+ctx2.save();
+	ctx2.translate(149,128);
+	ctx2.rotate(Math.PI*2 + Math.PI*cosine1/12);
+	ctx2.drawImage(rhand, -50, -100);	
+ctx2.restore();
+	
+ctx.save();
+	ctx.translate(861,633);
+	ctx.rotate(Math.PI*2 - Math.PI*cosine1/20);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(canvas2, -148, -224 ); 
+ctx.restore();
+	
+///Body
+ctx.save()
+	ctx.scale(0.75,0.75)
+	ctx.drawImage(body, 250,207);
+ctx.restore();
+	
+///Face
+ctx.save();
+	ctx.translate(448,334);
+	ctx.rotate(Math.PI*sine1/75);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(face, -55, -113 );	
+ctx.restore();
+
+///Left Arm
+ctx1.drawImage(lelbow, 50,110); 	
+	ctx1.save();
+	ctx1.translate(159,242);
+	ctx1.rotate(Math.PI*2.2 + Math.PI*cosine1/30);
+	ctx1.drawImage(lhand, -50, -120);	
+ctx1.restore();
+
+
+ctx.save();
+	ctx.translate(126,669);
+	ctx.rotate(Math.PI*2.5 + Math.PI*cosine1/31);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(canvas1, -57, -247 ); 
+ctx.restore();	
+	
+	
+///Right Leg
+	
+ctx3.drawImage(rleg, 90,110);	
+ctx3.save();
+	ctx3.translate(117,150);
+	ctx3.rotate(Math.PI*2 + Math.PI*sine1/5);
+	ctx3.drawImage(rfoot, -35,-35);	
+ctx3.restore();
+
+ctx.save();
+	ctx.translate(655,818);
+	ctx.rotate(697,794);
+	ctx.rotate(15/Math.PI*cosine1/25);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(canvas3, -167, -114); 
+ctx.restore();	
+	
+
+// RIGHT  LEG // CANVAS 3	
+	
+ctx4.drawImage(lleg2, 65,232);
+	
+ctx4.save();
+	ctx4.translate(161, 314);
+	ctx4.drawImage(lfoot, -97,-28);	
+
+ctx4.restore();
+ 
+/// DRAW NEW RIGHT LEG LAYER ON MAIN CANVAS
+
+ctx.save();
+	ctx.translate(445,887);
+	ctx.rotate(Math.PI*2 - Math.PI*cosine1/11);
+	ctx.scale(0.75,0.75);
+	ctx.drawImage(canvas4, -57, -247 ); 
+ctx.restore();
+	
+	
+ctx.save();
+	ctx.translate(454,825);
+	ctx.scale(0.75,0.75);
+	ctx.rotate(Math.PI*sine1/40);
+	ctx.drawImage(lleg1,0,0);
+ctx.restore();
+
+
+
+// <<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE
+///////////////////////////////////////////////////////////////////
+
+// CREDITS
+
+ctx.save();
+var credits = "Name, Title, FMX XYZ, FA/SP YEAR";
+ctx.font = 'bold 12px Helvetica';
+ctx.fillStyle = "rgba(0,0,0,1)"; // change the color here
+ctx.shadowColor = "rgba(255,255,255,1)"; // change shadow color here
+ctx.shadowBlur = 12;
+ctx.shadowOffsetX = 2;
+ctx.shadowOffsetY = 2;
+ctx.fillText(credits, 10, canvas.height - 10); // CHANGE THE LOCATION HERE
+ctx.restore();
+
+//////////////////////////////////////////////////////////////////
+// HTML DISPLAY FIELD FOR TESTING PURPOSES
+
+display.innerHTML = Math.round(mouseX) + " || " + Math.round(mouseY) + " || counter = " + Math.round(counter);
+
+/////////////////////////////////////////////////////////////////
+// LAST LINE CREATES THE ANIMATION
+
+requestAnimFrame(draw); // CALLS draw() every nth of a second
+
+}
+
+</script>
+
+</body>
+</html>
