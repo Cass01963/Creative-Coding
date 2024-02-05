@@ -1,0 +1,566 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title> ILLUSTRATOR MANDALA </title>
+
+<!-- import external .js scripts here -->
+
+<!-- <script type="text/javascript" src="#" ></script> -->
+	
+<script type="text/javascript" src="javascript/star.js" ></script>
+<script type="text/javascript" src="javascript/alien.js" ></script>
+<script type="text/javascript" src="javascript/cchip.js" ></script>
+<script type="text/javascript" src="javascript/cheese.js" ></script> 
+<script type="text/javascript" src="javascript/raygun.js" ></script>
+<script type="text/javascript" src="javascript/rocketship.js" ></script>
+<script type="text/javascript" src="javascript/spacehelmet.js" ></script>
+<script type="text/javascript" src="javascript/spaceman.js" ></script>
+<script type="text/javascript" src="javascript/ufo.js" ></script>
+<script type="text/javascript" src="javascript/waffle.js" ></script>
+	
+<!-- modify CSS properties here -->
+
+<style type="text/css">
+body,td,th {
+font-family: Monaco, "Courier New", "monospace";
+font-size: 14px;
+color: rgba(255,255,255,1);
+}
+
+body {
+background-color: rgba(0,0,0,1);
+}
+
+#container {
+position: relative;
+text-align: left;
+width: 95%;
+height: 800px;
+}
+
+#fmxCanvas {
+position: relative;
+background-color:rgba(255,255,255,1);
+border: rgba(255,255,255,1) thin dashed;
+margin: 10px;
+cursor: crosshair;
+display: inline-block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="container">
+<!-- START HTML CODE HERE -->
+
+<canvas id="fmxCanvas" width="800" height="800"></canvas>
+
+<div id="display"></div>
+
+<br><br>
+
+Add your personal notes or additional information here
+<!-- FINISH HTML CODE HERE -->
+</div>
+
+<script>
+
+///////////////////////////////////////////////////////////////////////
+// DECLARE requestAnimFrame
+
+var rAF = window.requestAnimFrame ||
+window.mozRequestAnimFrame ||
+window.webkitRequestAnimFrame ||
+window.msRequestAnimFrame;
+
+var fps = 30;
+
+window.requestAnimFrame = (
+
+function(callback) {
+
+return rAF ||
+
+function(callback) {
+window.setTimeout(callback, 1000 / fps);
+};
+
+})();
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE GLOBAL VARIABLES HERE
+
+var canvas;
+var ctx;
+canvas = document.getElementById("fmxCanvas");
+ctx = canvas.getContext("2d");
+
+var canvas1;
+var ctx1;
+canvas1 = document.createElement("canvas");
+ctx1 = canvas1.getContext("2d");
+
+canvas1.width = canvas.width;
+canvas1.height = canvas.height;
+
+var canvas2;
+var ctx2;
+canvas2 = document.createElement("canvas");
+ctx2 = canvas2.getContext("2d");
+
+canvas2.width = canvas.width;
+canvas2.height = canvas.height;
+	
+var canvas3;
+var ctx3;
+canvas3 = document.createElement("canvas");
+ctx3 = canvas3.getContext("2d");
+
+canvas3.width = canvas.width;
+canvas3.height = canvas.height;
+	
+var canvas4;
+var ctx4;
+canvas4 = document.createElement("canvas");
+ctx4 = canvas4.getContext("2d");
+
+canvas4.width = canvas.width;
+canvas4.height = canvas.height;
+	
+var canvas5;
+var ctx5;
+canvas5 = document.createElement("canvas");
+ctx5 = canvas5.getContext("2d");
+
+canvas5.width = canvas.width;
+canvas5.height = canvas.height;
+	
+var canvas6;
+var ctx6;
+canvas6 = document.createElement("canvas");
+ctx6 = canvas6.getContext("2d");
+
+canvas6.width = canvas.width;
+canvas6.height = canvas.height;
+	
+var canvas7;
+var ctx7;
+canvas7 = document.createElement("canvas");
+ctx7 = canvas7.getContext("2d");
+
+canvas7.width = canvas.width;
+canvas7.height = canvas.height;
+	
+var canvas8;
+var ctx8;
+canvas8 = document.createElement("canvas");
+ctx8 = canvas8.getContext("2d");
+
+canvas8.width = canvas.width;
+canvas8.height = canvas.height;
+	
+var canvas9;
+var ctx9;
+canvas9 = document.createElement("canvas");
+ctx9 = canvas9.getContext("2d");
+
+canvas9.width = canvas.width;
+canvas9.height = canvas.height;
+	
+var canvas10;
+var ctx10;
+canvas10 = document.createElement("canvas");
+ctx10 = canvas10.getContext("2d");
+
+canvas10.width = canvas.width;
+canvas10.height = canvas.height;
+
+var display;
+display = document.getElementById('display');
+
+var counter;
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE YOUR GLOBAL VARIABLES HERE
+
+///////////////////////////////////////////////////////////////////////
+// CALL THE EVENT LISTENERS
+
+window.addEventListener("load", setup, false);
+//////////////////////////////////////////////////////////////////////
+// ADD EVENT LISTENERS
+
+canvas.addEventListener("mousemove", mousePos, false);
+
+//////////////////////////////////////////////////////////////////////
+// MOUSE COORDINATES
+
+var stage, mouseX, mouseY;
+
+function mousePos(event) {
+stage = canvas.getBoundingClientRect();
+mouseX = event.clientX - stage.left;
+mouseY = event.clientY - stage.top;
+}
+
+/////////////////////////////////////////////////////////////////////
+// INITIALIZE THE STARTING FUNCTION
+
+function setup() {
+
+/////////////////////////////////////////////////////////////////////
+// DECLARE STARTING VALUES OF GLOBAL VARIABLES
+
+counter = 0;
+mouseX = canvas.width/2;
+mouseY = canvas.height/2;
+
+/////////////////////////////////////////////////////////////////////
+// CALL SUBSEQUENT FUNCTIONS, as many as you need
+
+clear(); // COVER TRANSPARENT CANVAS OR CLEAR CANVAS
+
+draw(); // THIS IS WHERE EVERYTHING HAPPENS
+
+}
+
+////////////////////////////////////////////////////////////////////
+// CLEAR THE CANVAS FOR ANIMATION
+// USE THIS AREA TO MODIFY BKGD
+
+function clear() {
+
+ctx.clearRect(0,0,canvas.width, canvas.height);
+ctx1.clearRect(0,0,canvas.width, canvas.height);
+ctx2.clearRect(0,0,canvas.width, canvas.height);
+ctx3.clearRect(0,0,canvas.width, canvas.height);
+ctx4.clearRect(0,0,canvas.width, canvas.height);
+ctx5.clearRect(0,0,canvas.width, canvas.height);
+ctx6.clearRect(0,0,canvas.width, canvas.height);
+ctx7.clearRect(0,0,canvas.width, canvas.height);
+ctx8.clearRect(0,0,canvas.width, canvas.height);
+ctx9.clearRect(0,0,canvas.width, canvas.height);
+ctx10.clearRect(0,0,canvas.width, canvas.height);
+	
+// clear additional ctxs here if you have more than canvas1
+
+}
+
+////////////////////////////////////////////////////////////////////
+// THIS IS WHERE EVERYTHING HAPPENS
+
+function draw() {
+
+counter += 0.1; // EASIER FOR SINE COSINE FUNCTIONS
+
+if (counter > Math.PI*200) { counter = 0; } // RESET COUNTER
+
+clear(); // USE THIS TO REFRESH THE FRAME AND CLEAR CANVAS
+
+////////////////////////////////////////////////////////////////////
+// >>>START HERE>>>START HERE>>>START HERE>>>START HERE>>>START HERE
+
+////BACKGROUND
+var bkgdgrd = ctx.createRadialGradient(mouseX,mouseY,50,mouseX,mouseY,800);
+	bkgdgrd.addColorStop(0,"rgba(0,0,0,1.00)");
+	bkgdgrd.addColorStop(0.25,"rgba(82,83,255,1.00)");
+	bkgdgrd.addColorStop(0.5,"rgba(72,87,155,1.00)");
+	bkgdgrd.addColorStop(0.75,"rgba(184,98,236,1.00)");
+	bkgdgrd.addColorStop(1,"rgba(0,0,0,1.00)");
+	
+ctx.beginPath();
+	
+	ctx.rect(0,0,canvas.width,canvas.height);
+	
+ctx.closePath();
+	
+ctx.fillStyle = bkgdgrd;
+	
+ctx.fill();
+	
+///Flaring Balls of Energy
+	
+var x, y, rad;
+x = Math.random() * canvas.width;	
+y = Math.random() * canvas.height;
+rad = 5 + Math.random() * 30;
+	
+x1 = Math.random() * canvas.width;	
+y1 = Math.random() * canvas.height;
+rad1 = 15 + Math.random() * 20;
+	
+ctx.beginPath();
+
+	ctx.arc(x,y,rad,0*Math.PI,2*Math.PI,true);
+	
+	ctx.arc(x1,y1,rad1,0*Math.PI,2*Math.PI,true);
+	
+ctx.closePath();
+	
+	ctx.fillStyle = "rgba(255,255,255,1.00)";
+	ctx.fill();
+	
+//QUADRANT 3
+cchip(ctx3,mouseX,mouseY,canvas);
+ 
+var amount3 = 20;
+	
+for (var k=0; k<amount3; k++) {
+ 
+ctx.save();
+	
+	ctx.translate(0,400);
+	ctx.scale(0.5,0.5)
+	ctx.rotate(k/amount3 * Math.PI * 2 - counter/8);
+	ctx.drawImage(canvas3,625,170);
+	
+ctx.restore();
+}
+	
+var amount3 = 20;
+	
+for (var k=0; k<amount3; k++) {
+ 
+ctx.save();
+	
+	ctx.translate(0,400);
+	ctx.scale(0.5,0.5)
+	ctx.rotate(k/amount3 * Math.PI * 2 - counter/8);
+	ctx.drawImage(canvas3,0,380);
+	
+ctx.restore();
+}
+	
+var amount3 = 20;
+	
+for (var k=0; k<amount3; k++) {
+ 
+ctx.save();
+	
+	ctx.translate(800,400);
+	ctx.scale(0.5,0.5)
+	ctx.rotate(k/amount3 * Math.PI * 2 - counter/8);
+	ctx.drawImage(canvas3,0,380);
+	
+ctx.restore();
+}
+	
+var amount3 = 20;
+	
+for (var k=0; k<amount3; k++) {
+ 
+ctx.save();
+	
+	ctx.translate(800,400);
+	ctx.scale(0.5,0.5)
+	ctx.rotate(k/amount3 * Math.PI * 2 - counter/8);
+	ctx.drawImage(canvas3,625,170);
+	
+ctx.restore();
+}	
+	
+//QUADRANT 4
+cheese(ctx4,mouseX,mouseY,canvas);
+ 
+var rad = Math.sin(counter/10) * canvas.width/2;
+ 
+var amount5 = 10;
+	
+for (var n=0; n<amount5; n++) {
+ 
+ctx.save();
+	
+ctx.translate(canvas.width/2 , canvas.height/2);
+ctx.scale(0.7,0.7);
+ctx.rotate(n/amount5 * Math.PI * 2 - counter/10);
+ctx.globalAlpha = 0.85;
+ctx.drawImage(canvas4,-400 +rad, -44+rad);
+	
+ctx.restore();
+ 
+}
+
+//QUADRANT 2
+alien(ctx2,mouseX,mouseY,canvas);
+ 	
+var amountctx3 = 10;
+	
+for (var g=0; g<amountctx3; g++) {
+	
+ctx.save();
+	
+ctx.translate(canvas.width/2, canvas.height/2);
+ctx.rotate(Math.PI * 2 * g/amountctx3 - counter/10);
+ctx.drawImage(canvas2,160,120);
+
+ctx.restore();
+	
+}	
+
+//QUADRANT 9
+ufo(ctx9,mouseX,mouseY,canvas);
+ 
+var amount7 = 10
+	
+for (var o = 0; o< amount7; o++ ) {
+	
+ctx.save();
+	
+	ctx.translate(400,400);
+	ctx.rotate(o/amount7 * Math.PI*2 + counter/4);
+	ctx.drawImage(canvas9,mouseX,mouseY);
+	
+ctx.restore();
+}
+	
+//QUADRANT 10
+waffle(ctx10,mouseX,mouseY,canvas);
+ 
+var amount10 = 10;
+	
+for (var u=0; u<amount10; u++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2 , canvas.height/2);
+	ctx.rotate(u/amount10 * Math.PI * 2 + counter/10);
+	ctx.scale(0.85,0.85);
+	ctx.globalAlpha = 0.7;
+	ctx.drawImage(canvas10,mouseX/2,mouseY/2);
+	
+ctx.restore();
+}	
+	
+//QUADRANT 6
+rocketship(ctx6,mouseX,mouseY,canvas);
+ 
+var amount11 = 5;
+	
+for (var t=0; t<amount11; t++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2 , canvas.height/2);
+	ctx.rotate(t/amount11 * Math.PI * 2 - counter/5);
+	ctx.drawImage(canvas6,mouseX/2,mouseY/2);
+	
+ctx.restore();
+}
+	
+//QUADRANT 8
+spaceman(ctx8,mouseX,mouseY,canvas);
+ 
+ctx.save();
+	
+	ctx.translate(40,40)
+	ctx.scale(0.9,0.9);
+	ctx.drawImage(canvas8,295,250);
+	
+ctx.restore();
+
+//QUADRANT 1
+star(ctx1,mouseX,mouseY,canvas);
+	
+var amount10 = 8;
+	
+for (var u=0; u<amount10; u++) {
+ 
+ctx.save();
+	
+	ctx.translate(canvas.width/2 , canvas.height/2);
+	ctx.rotate(u/amount10 * Math.PI * 2 + counter/10);
+	ctx.scale(0.3,0.3);
+	ctx.drawImage(canvas1,315,250);
+	
+ctx.restore();
+}
+	
+//QUADRANT 7
+spacehelmet(ctx7,mouseX,mouseY,canvas);
+ 
+var rad = Math.sin(-counter/10) * canvas.width/2;
+ 
+var amount12 = 20;
+	
+for (var h=0; h<amount12; h++) {
+ 
+ctx.save();
+	
+ctx.translate(canvas.width/2 , canvas.height/2);
+ctx.scale(0.7,0.7);
+ctx.rotate(h/amount11 * Math.PI * 2 - counter/10);
+ctx.globalAlpha = 0.5;
+ctx.drawImage(canvas7,400 +rad, -44+rad);
+	
+ctx.restore();
+ 
+}
+	
+//QUADRANT 5
+raygun(ctx5,mouseX,mouseY,canvas);
+ 
+var amountctx2 = 8;
+	
+for (var q=0; q<amountctx2; q++) {
+	
+ctx.save();
+	
+ctx.translate(canvas.width/2, canvas.height/2);
+ctx.scale(0.5,0.5);
+ctx.rotate(Math.PI * 2 * q/amountctx2 + counter/10);
+ctx.drawImage(canvas5,135,280);
+
+ctx.restore();
+	
+}
+
+	
+
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+// <<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE
+///////////////////////////////////////////////////////////////////
+
+// CREDITS
+
+ctx.save();
+var credits = "Name, Title, FMX XYZ, FA/SP YEAR";
+ctx.font = 'bold 12px Helvetica';
+ctx.fillStyle = "rgba(0,0,0,1)"; // change the color here
+ctx.shadowColor = "rgba(255,255,255,1)"; // change shadow color here
+ctx.shadowBlur = 12;
+ctx.shadowOffsetX = 2;
+ctx.shadowOffsetY = 2;
+ctx.fillText(credits, 10, canvas.height - 10); // CHANGE THE LOCATION HERE
+ctx.restore();
+
+//////////////////////////////////////////////////////////////////
+// HTML DISPLAY FIELD FOR TESTING PURPOSES
+
+display.innerHTML = Math.round(mouseX) + " || " + Math.round(mouseY) + " || counter = " + Math.round(counter);
+
+/////////////////////////////////////////////////////////////////
+// LAST LINE CREATES THE ANIMATION
+
+requestAnimFrame(draw); // CALLS draw() every nth of a second
+
+}
+
+</script>
+
+</body>
+</html>
