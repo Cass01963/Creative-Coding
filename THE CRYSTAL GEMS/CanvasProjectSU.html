@@ -1,0 +1,2598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+
+<title> Crystal Gems </title>
+
+
+
+<!-- import external .js scripts here -->
+
+<!-- <script type="text/javascript" src="#" ></script> -->
+
+
+<!-- modify CSS properties here -->
+
+<style type="text/css">
+
+body,td,th {
+font-family: Monaco, "Courier New", "monospace";
+font-size: 14px;
+color: rgba(255,255,255,1);
+}
+
+body {
+background-color: rgba(0,0,0,1);
+}
+
+#container {
+position: relative;
+text-align: left;
+width: 95%;
+height: 800px;
+}
+
+#fmxCanvas {
+position: relative;
+background-color:rgba(255,255,255,1);
+border: rgba(255,255,255,1) thin dashed;
+cursor: crosshair;
+display: inline-block;
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<div id="container">
+<!-- START HTML CODE HERE -->
+
+
+
+<canvas id="fmxCanvas" width="450" height="480"></canvas>
+
+<div id="display"></div>
+
+<img src="stevenuniverse.png" alt="crystal gems" id="img1" />
+
+
+<!-- FINISH HTML CODE HERE -->
+</div>
+
+<script>
+
+///////////////////////////////////////////////////////////////////////
+// DECLARE requestAnimFrame
+
+var rAF = window.requestAnimFrame ||
+window.mozRequestAnimFrame ||
+window.webkitRequestAnimFrame ||
+window.msRequestAnimFrame;
+
+var fps = 30;
+
+window.requestAnimFrame = (
+
+function(callback) {
+
+return rAF ||
+
+function(callback) {
+window.setTimeout(callback, 1000 / fps);
+};
+
+})();
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE GLOBAL VARIABLES HERE
+
+var canvas;
+var context;
+canvas = document.getElementById("fmxCanvas");
+context = canvas.getContext("2d");
+
+var canvas1;
+var context1;
+canvas1 = document.createElement("canvas");
+context1 = canvas1.getContext("2d");
+
+canvas1.width = canvas.width;
+canvas1.height = canvas.height;
+
+var display;
+display = document.getElementById('display');
+
+var counter;
+
+
+///////////////////////////////////////////////////////////////////////
+// DEFINE YOUR GLOBAL VARIABLES HERE
+
+var img1 = new Image();
+	img1 = document.getElementById("img1");
+
+///////////////////////////////////////////////////////////////////////
+// CALL THE EVENT LISTENERS
+
+window.addEventListener("load", setup, false);
+
+
+//////////////////////////////////////////////////////////////////////
+// ADD EVENT LISTENERS
+
+canvas.addEventListener("mousemove", mousePos, false);
+
+//////////////////////////////////////////////////////////////////////
+// MOUSE COORDINATES
+
+var stage, mouseX, mouseY;
+
+function mousePos(event) {
+stage = canvas.getBoundingClientRect();
+mouseX = event.clientX - stage.left;
+mouseY = event.clientY - stage.top;
+}
+
+/////////////////////////////////////////////////////////////////////
+// INITIALIZE THE STARTING FUNCTION
+
+function setup() {
+
+/////////////////////////////////////////////////////////////////////
+// DECLARE STARTING VALUES OF GLOBAL VARIABLES
+
+counter = 0;
+mouseX = canvas.width/2;
+mouseY = canvas.height/2;
+
+/////////////////////////////////////////////////////////////////////
+// CALL SUBSEQUENT FUNCTIONS, as many as you need
+
+clear(); // COVER TRANSPARENT CANVAS OR CLEAR CANVAS
+
+draw(); // THIS IS WHERE EVERYTHING HAPPENS
+
+}
+
+////////////////////////////////////////////////////////////////////
+// CLEAR THE CANVAS FOR ANIMATION
+// USE THIS AREA TO MODIFY BKGD
+
+function clear() {
+
+context.clearRect(0,0,canvas.width, canvas.height);
+context1.clearRect(0,0,canvas.width, canvas.height);
+
+// clear additional contexts here if you have more than canvas1
+
+}
+
+////////////////////////////////////////////////////////////////////
+// THIS IS WHERE EVERYTHING HAPPENS
+
+function draw() {
+
+counter += 0.1; // EASIER FOR SINE COSINE FUNCTIONS
+
+if (counter > Math.PI*200) { counter = 0; } // RESET COUNTER
+
+clear(); // USE THIS TO REFRESH THE FRAME AND CLEAR CANVAS
+
+////////////////////////////////////////////////////////////////////
+// >>>START HERE>>>START HERE>>>START HERE>>>START HERE>>>START HERE
+
+context.drawImage(img1,18,19); 
+	
+//Background - Finish Last
+	
+	var bkgdgrd5 = context.createRadialGradient(mouseX,mouseY,50,mouseX,mouseY,600);
+	
+	bkgdgrd5.addColorStop(0,"rgba(255,253,140,1.00)");
+	bkgdgrd5.addColorStop(0.2,"rgba(247,101,247,1.00)");
+	bkgdgrd5.addColorStop(0.4,"rgba(255,255,124,1.00)");
+	bkgdgrd5.addColorStop(0.6,"rgba(148,255,255,1.00)");
+	bkgdgrd5.addColorStop(0.8,"rgba(255,131,131,1.00)");
+	bkgdgrd5.addColorStop(1,"rgba(104,60,205,1.00)");
+	
+	context.beginPath();
+	
+	context.rect(0,0,canvas.width,canvas.height);
+	
+	context.closePath();
+	
+	context.fillStyle = bkgdgrd5;
+	
+	context.fill();
+
+//Pearl
+	
+//Head
+	
+	context.beginPath();
+	
+	context.moveTo(320,172);
+	context.quadraticCurveTo(335,179,347,155);
+	context.bezierCurveTo(368,83,281,107,313,169);
+	context.lineTo(310,173);
+	context.quadraticCurveTo(310,176,318,178);
+	context.lineTo(320,172);
+	
+	
+	//context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,252,252,1.00)";
+	
+	context.fill();
+	
+//Eye
+	
+	///1
+	
+	context.beginPath();
+	
+	context.moveTo(332,138);
+	context.bezierCurveTo(326,153,316,145,321,131);
+	context.bezierCurveTo(324,124,336,123,332,138);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.lineWidth = 1.2;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,252,252,1.00)";
+	
+	context.fill();
+	
+	///2
+	
+	context.beginPath();
+	
+	context.moveTo(346,143);
+	context.bezierCurveTo(342,155,335,149,338,141);
+	context.bezierCurveTo(342,127,348,130,346,143);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.lineWidth = 1.2;
+	
+	context.stroke();
+	
+	context.fillStyle = "white"
+	
+	context.fill();
+	
+	//Pupil1
+	
+	context.beginPath();
+	
+	context.moveTo(328,136);
+	context.bezierCurveTo(331,143,322,145,324,142);
+	context.bezierCurveTo(322,136,328,132,328,136);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(191,255,255,1.00)"
+	
+	context.fill();
+	
+	//Pupil2
+	
+	context.beginPath();
+	
+	context.moveTo(342,140);
+	context.bezierCurveTo(345,145,339,147,339,146);
+	context.bezierCurveTo(339,135,342,139,342,140);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(191,255,255,1.00)"
+	
+	context.fill();
+	
+//Face
+	
+	///Eyebrow
+	
+		////1
+	
+		context.beginPath();
+	
+		context.moveTo(335,132);
+		context.lineTo(328,124);
+	
+		context.closePath();
+	
+		context.lineWidth = 0.5;
+	
+		context.strokeStyle = "rgba(0,0,0,1.00)";
+		
+		context.stroke();
+	
+		////2
+	
+		context.beginPath();
+	
+		context.moveTo(340,133.5);
+		context.lineTo(347,130);
+	
+		context.closePath();
+	
+		context.lineWidth = 0.5;
+	
+		context.strokeStyle = "rgba(0,0,0,1.00)";
+		
+		context.stroke();
+	
+	///Mouth
+	
+	context.beginPath();
+	
+	context.moveTo(324,157);
+	context.quadraticCurveTo(326,164,336,164);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.7;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+		
+	context.stroke();
+	
+	//Gem
+	
+	context.beginPath();
+	
+	context.moveTo(346,122);
+	context.bezierCurveTo(344,132,332,128,335,119);
+	context.bezierCurveTo(339,108,347,113,346,122);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(253,253,253,1.00)"
+	
+	context.fill();
+	
+	
+	
+	//Nose
+	
+	context.beginPath();
+	
+	context.moveTo(335,156);
+	context.lineTo(353,152);
+	context.lineTo(337,147);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(253,253,253,1.00)"
+	
+	context.fill();
+	
+	
+	
+//Hair
+	
+	//1
+	
+	context.beginPath();
+	
+	context.moveTo(340,165);
+	context.lineTo(348,165);
+	context.quadraticCurveTo(335,174,348,165);
+	context.quadraticCurveTo(337,179,332,173);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,206,168,1.00)"
+	
+	context.fill();
+	
+	//2
+	
+	context.beginPath();
+	
+	context.moveTo(319,129);
+	context.quadraticCurveTo(297,156,321,155);
+	context.quadraticCurveTo(310,174,299,162);
+	context.bezierCurveTo(293,142,277,134,276,125);
+	context.bezierCurveTo(306,110,331,108,337,111);
+	context.moveTo(337,111);
+	context.quadraticCurveTo(323,114,333,119);
+	context.quadraticCurveTo(326,124,322,121);
+	context.quadraticCurveTo(321,126,319,129);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,206,168,1.00)"
+	
+	context.fill();
+	
+	//Minor Detail
+	
+	context.beginPath();
+	
+	context.moveTo(321,155);
+	context.quadraticCurveTo(316,161,313,161);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+		
+//Arms/Hands
+	
+	//LeftArm
+	
+	///1
+	
+	context.beginPath();
+	
+	context.moveTo(298,178);
+	context.bezierCurveTo(293,186,284,190,259,180);
+	context.bezierCurveTo(254,171,301,171,298,178)
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(253,253,253,1.00)"
+	
+	context.fill();
+	
+	///2
+	
+	context.beginPath();
+	
+	context.moveTo(199,149);
+	context.bezierCurveTo(184,158,250,194,253,165);
+	context.quadraticCurveTo(209,172,210,146);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(253,253,253,1.00)"
+	
+	context.fill();
+	
+	//Minor Detail
+	
+	context.beginPath();
+	
+	context.moveTo(204,151);
+	
+	context.quadraticCurveTo(202,155,209,159);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	//RightArm & Hand
+	
+	context.beginPath();
+	
+	context.moveTo(353,179);
+	context.bezierCurveTo(347,179,357,160,359,172);
+	context.moveTo(345,228);
+	context.bezierCurveTo(315,171,309,181,310,192);
+	context.quadraticCurveTo(336,233,349,240);
+	context.quadraticCurveTo(364,220,370,199);
+	context.quadraticCurveTo(371,173,368,171);
+	context.bezierCurveTo(350,165,345,192,358,190);
+	context.quadraticCurveTo(360,195,365,199);
+	context.lineTo(345,228);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)"
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(253,253,253,1.00)"
+	
+	context.fill();
+	
+	////Minor Detail1
+	
+	context.beginPath();
+	
+	context.moveTo(362,177);
+	context.quadraticCurveTo(360,172,355,175);
+	context.moveTo(361,181);
+	context.quadraticCurveTo(359,176,353,179);
+	context.moveTo(359,184);
+	context.quadraticCurveTo(356,181,350,183);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	////Minor Detail2
+	
+	context.beginPath();
+	
+	context.moveTo(354,185);
+	context.quadraticCurveTo(358,189,359,187);
+	context.lineTo(359,192);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+//Body
+	
+	context.beginPath();
+	
+	context.moveTo(318,179);
+	context.lineTo(315,184);
+	context.bezierCurveTo(325,235,257,226,303,178);
+	context.lineTo(311,174);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(154,237,237,1.00)"
+	
+	context.fill();
+	
+	//Star
+	
+	context.beginPath();
+	
+	context.moveTo(304,204);
+    context.quadraticCurveTo(293,203,300,199);
+    context.quadraticCurveTo(297,189,305,195);
+    context.quadraticCurveTo(310,185,310,197);
+	context.quadraticCurveTo(314,201,308,204);
+    context.quadraticCurveTo(306,213,304,204);
+    
+    context.closePath();
+    
+    context.fillStyle = "rgba(255,255,153,1.00)";
+    
+    context.fill();
+
+	//Minor Detail
+	
+	context.beginPath();
+	
+	context.moveTo(303,179);
+	context.lineTo(307,184);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.7;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+//Foot
+	
+	context.beginPath();
+	
+	context.moveTo(303,387);
+	context.bezierCurveTo(298,389,283,394,269,386);
+	context.bezierCurveTo(270,380,300,381,303,387);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1.00)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(207,255,255,1.00)";
+	
+	context.fill();
+	
+	
+//Garnet
+	
+//Hair
+	
+	context.beginPath();
+	
+	context.moveTo(197,79);
+	context.bezierCurveTo(185,38,221,33,254,30);
+	context.bezierCurveTo(284,40,300,52,293,85);
+	context.quadraticCurveTo(308,127,232,117);
+	context.quadraticCurveTo(182,119,197,79);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.fillStyle = "rgba(0,0,0,1)";
+	
+	context.fill();
+	
+//Face
+	
+	///Head
+	
+	context.beginPath();
+	
+	context.moveTo(246,110);
+	context.lineTo(254,108);
+	context.lineTo(252,67);
+	context.quadraticCurveTo(220,69,219,76);
+	context.bezierCurveTo(215,110,227,111,239,110);
+	context.lineTo(239,117);
+	context.lineTo(247,118);
+	context.lineTo(247,110);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+	///Mouth
+	
+	context.beginPath();
+	
+	context.moveTo(247,95);
+	context.bezierCurveTo(243,102,230,102,229,99);
+	context.bezierCurveTo(224,95,243,92,247,95);
+	
+	context.closePath();
+	
+	context.lineWidth = 1.3;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,255,255,1.00)"
+	context.fill();
+	
+	//Teeth
+	
+	///1
+	
+	context.beginPath();
+	
+	context.moveTo(231,95);
+	context.lineTo(232,101);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///2
+	
+	context.beginPath();
+	
+	context.moveTo(237,95);
+	context.lineTo(238,101);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///3
+	
+	context.beginPath();
+	
+	context.moveTo(244,98);
+	context.lineTo(243,94);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+	///Minor Detail1
+	
+	context.beginPath();
+	
+	context.moveTo(242,101);
+	context.quadraticCurveTo(238,107,234,103);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Minor Detail2
+	
+	context.beginPath();
+	
+	context.moveTo(231,91);
+	context.quadraticCurveTo(234,88,240,91);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	//Glasses
+	
+	var mygrd = context.createLinearGradient(223,67,285,105);	
+	mygrd.addColorStop(0, "rgba(239,175,232,1.00)");
+	mygrd.addColorStop(0.5, "rgba(183,248,255,1.00)");
+	
+	context.beginPath();
+	
+	context.moveTo(235,81);
+	context.lineTo(245,89);
+	context.lineTo(252,81);
+	context.lineTo(251,68);
+	context.quadraticCurveTo(220,69,219,76);
+	context.lineTo(219,86);
+	context.lineTo(225,90);
+	context.lineTo(230,85);
+	context.quadraticCurveTo(231,80,235,81);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = mygrd;
+	
+	context.fill();
+	
+	//Nostril
+	
+	context.beginPath();
+	
+	context.moveTo(235,87);
+	context.quadraticCurveTo(231,85,235,84);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+//Body
+	
+	///Right Shoulder
+	
+	context.beginPath()
+	
+	context.moveTo(198,121);
+	context.bezierCurveTo(198,141,217,153,229,139);
+	context.bezierCurveTo(243,123,203,111,198,121);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(56,0,38,1.00)"
+	
+	context.fill();
+	
+	///Center Body (Breast)
+	
+	var mygrd3 = context.createLinearGradient(228,149,374,136);	
+	mygrd3.addColorStop(0, "rgba(221,20,78,1.00)");
+	mygrd3.addColorStop(0.125, "rgba(233,83,216,1.00)");
+	mygrd3.addColorStop(0.25, "rgba(245,149,245,1.00)");
+	
+	context.beginPath();
+	
+	context.moveTo(216,141);
+	context.bezierCurveTo(207,120,267,99,271,144);
+	context.quadraticCurveTo(266,154,257,157);
+	context.quadraticCurveTo(240,152,229,157);
+	context.quadraticCurveTo(218,153,216,141);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = mygrd3;
+	
+	context.fill();
+	
+	
+	///Neck
+	
+	context.beginPath();
+	
+	context.moveTo(232,124);
+	context.lineTo(246,125);
+	context.lineTo(251,119);
+	context.lineTo(234,119);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.fillStyle = "rgba(0,0,0,1)";
+	
+	context.fill();
+	
+	///Stars
+	
+	////1
+	
+	context.beginPath();
+	
+	context.moveTo(224,124);
+	context.lineTo(225,132);
+	context.quadraticCurveTo(249,128,230,141);
+	context.lineTo(244,154);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,0.25)";
+	
+	context.stroke();
+
+	////2
+	
+	context.beginPath();
+	
+	context.moveTo(263,155);
+	context.lineTo(245,141);
+	context.quadraticCurveTo(263,129,246,125);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,0.25)";
+	
+	context.stroke();
+	
+	///LeftShoulder
+	
+	context.beginPath();
+	
+	context.moveTo(297,111);
+	context.bezierCurveTo(300,140,272,153,260,138);
+	context.bezierCurveTo(248,120,276,107,297,111);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(56,0,38,1.00)"
+	
+	context.fill();
+
+//Legs & Feet
+	var mygrd2 = context.createLinearGradient(214,203,350,220);
+	mygrd2.addColorStop(0, "rgba(19,0,29,1.00)");
+	mygrd2.addColorStop(0.5, "rgba(56,0,38,1.00)");
+	
+	context.beginPath();
+	
+	context.moveTo(259,171);
+	context.bezierCurveTo(313,190,313,265,293,283);
+	context.bezierCurveTo(327,298,321,405,322,401);
+	context.quadraticCurveTo(307,395,302,400);
+	context.lineTo(309,391);
+	context.lineTo(279,315);
+	context.bezierCurveTo(252,261,159,201,230,173);
+	context.lineTo(230,157);
+	context.quadraticCurveTo(247,152,259,157);
+	context.lineTo(259,171);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = mygrd2
+	
+	context.fill();
+	
+	///LeftFoot
+	
+	context.beginPath();
+	
+	context.moveTo(154,392);
+	context.lineTo(189,393);
+	context.quadraticCurveTo(187,369,154,392);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(249,0,123,1.00)";
+	
+	context.fill();
+	
+	///Right Foot
+	
+	context.beginPath();
+	
+	context.moveTo(322,401);
+	context.lineTo(322,408);
+	context.quadraticCurveTo(309,417,298,409);
+	context.quadraticCurveTo(296,408,302,400);
+	context.quadraticCurveTo(307,395,322,401);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(249,0,123,1.00)";
+	
+	context.fill();
+	
+//Arms & Hands
+	
+	///Right Arm
+	
+	////1
+	
+	context.beginPath();
+	
+	context.moveTo(193,161);
+	context.bezierCurveTo(245,115,189,139,179,158)
+	context.quadraticCurveTo(186,153,193,161);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+	////2
+	
+	context.beginPath();
+	
+	context.moveTo(179,158);
+	context.bezierCurveTo(177,170,195,197,195,193);
+	context.quadraticCurveTo(196,192,209,193);
+	context.bezierCurveTo(194,161,191,153,179,158);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(56,0,38,1.00)"
+	
+	context.fill();
+	
+	////Finger
+	
+	context.beginPath();
+	
+	context.moveTo(205,182);
+	context.quadraticCurveTo(212,180,216,176);
+	context.bezierCurveTo(223,175,214,187,211,183);
+	context.quadraticCurveTo(205,193,206,182);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+	////Minor Detail
+	
+	context.beginPath();
+	
+	context.moveTo(205,182);
+	context.lineTo(196,194);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.stroke();
+	
+	///Left Arm
+	
+	////1
+	
+	context.beginPath();
+	
+	context.moveTo(312,145);
+	context.bezierCurveTo(286,123,283,126,282,137);
+	context.lineTo(300,151);
+	context.quadraticCurveTo(302,145,312,145);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+	////2
+	
+	context.beginPath();
+	
+	context.moveTo(288,185);
+	context.lineTo(300,150);
+	context.bezierCurveTo(318,137,315,154,298,194);
+	context.bezierCurveTo(272,190,263,198,261,205);
+	context.quadraticCurveTo(256,211,257,202);
+	context.quadraticCurveTo(263,186,288,185);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(56,0,38,1.00)"
+	
+	context.fill();
+	
+	////Finger1
+	
+	context.beginPath();
+	
+	context.moveTo(288,185);
+	context.quadraticCurveTo(281,174,273,179);
+	context.quadraticCurveTo(281,182,281,184);
+	context.bezierCurveTo(268,183,260,187,257,195);
+	context.quadraticCurveTo(254,201,264,192);
+	context.quadraticCurveTo(271,185,288,185);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+	////Finger2
+	
+	context.beginPath();
+	
+	context.moveTo(298,195);
+	context.quadraticCurveTo(292,199,280,199);
+	context.quadraticCurveTo(255,217,274,197);
+	context.quadraticCurveTo(255,215,264,201);
+	context.bezierCurveTo(267,194,282,190,298,195);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(190,33,139,1.00)"
+	context.fill();
+	
+//Pearl's Fingers
+	
+	context.beginPath();
+	 
+	context.moveTo(187,146);
+	context.bezierCurveTo(181,138,200,127,204,135);
+	context.bezierCurveTo(203,141,192,147,187,146);
+	
+	
+	context.closePath();
+	
+	context.lineWidth = 1.5
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,252,252,1.00)";
+	
+	context.fill();
+	
+	
+	///Minor Detail 
+	
+	context.beginPath();
+	
+	context.moveTo(198,135);
+	context.quadraticCurveTo(194,139,200,141);
+	context.moveTo(193,136);
+	context.quadraticCurveTo(190,141,195,144);
+	context.moveTo(188,140);
+	context.quadraticCurveTo(189,145,192,146);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+//Amethyst
+	
+//Hair
+	
+	context.beginPath();
+	
+	context.moveTo(144,377);
+	context.bezierCurveTo(199,390,233,261,192,200);
+	context.quadraticCurveTo(155,161,118,209);
+	context.quadraticCurveTo(103,256,84,250);
+	context.quadraticCurveTo(86,260,87,257);
+	context.quadraticCurveTo(85,264,101,266);
+	context.quadraticCurveTo(88,270,79,294);
+	context.quadraticCurveTo(75,311,57,314);
+	context.quadraticCurveTo(61,321,71,321);
+	context.quadraticCurveTo(45,343,26,339);
+	context.quadraticCurveTo(28,348,35,349);
+	context.bezierCurveTo(37,381,128,387,155,360);
+	context.quadraticCurveTo(151,373,144,377);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(232,220,240,1.00)";
+	
+	context.fill();
+	
+	///Minor Detail 1
+	
+	context.beginPath()
+	
+	context.moveTo(85,252);
+	context.quadraticCurveTo(85,258,96,261);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Minor Detail 2
+	
+	context.beginPath();
+	
+	context.moveTo(33,349);
+	context.lineTo(45,353);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.3;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+
+//Arms&Hands
+	
+	///LeftArm
+	
+	context.beginPath();
+	
+	context.moveTo(142,258);
+	context.bezierCurveTo(124,282,73,215,95,203);
+	context.quadraticCurveTo(103,194,124,202);
+	context.lineTo(120,208);
+	context.bezierCurveTo(138,230,155,239,142,258);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(182,141,202,1.00)";
+	
+	context.fill();
+	
+	///MinorDetail
+	
+	context.beginPath();
+	
+	context.moveTo(120,208);
+	context.lineTo(115,205);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.2;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+//Legs&Feet
+	
+	///Right Foot
+	
+	context.beginPath();
+	 
+	context.moveTo(129,381);
+	context.quadraticCurveTo(123,393,116,395);
+	context.bezierCurveTo(88,399,66,389,89,384);
+	context.lineTo(93,374);
+	context.quadraticCurveTo(119,365,129,381);
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(104,98,139,1.00)";
+	
+	context.fill();
+	
+	///Left Foot
+	
+	context.beginPath();
+	
+	context.moveTo(204,379);
+	context.bezierCurveTo(203,403,181,410,169,401);
+	context.quadraticCurveTo(168,396,178,392);
+	context.lineTo(176,384);
+	context.quadraticCurveTo(189,363,204,379);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(104,98,139,1.00)";
+	
+	context.fill();
+	
+	///Both Legs
+	
+	context.beginPath();
+	
+	context.moveTo(113,347);
+	context.bezierCurveTo(101,317,211,215,204,379);
+	context.lineTo(176,384);
+	context.lineTo(176,358);
+	context.quadraticCurveTo(164,343,165,336);
+	context.lineTo(160,336);
+	context.quadraticCurveTo(149,354,139,359);
+	context.quadraticCurveTo(133,380,129,381);
+	context.quadraticCurveTo(98,380,93,374);
+	context.quadraticCurveTo(108,351,113,347);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(36,34,49,1.00)";
+	
+	context.fill();
+	
+	///Stars
+	
+	////1
+	
+	context.beginPath();
+	
+	context.moveTo(116,344);
+	context.quadraticCurveTo(123,329,122,346);
+	context.quadraticCurveTo(140,351,124,353);
+	context.quadraticCurveTo(125,369,114,355);
+	context.quadraticCurveTo(99,359,112,349);
+	context.quadraticCurveTo(111,346,116,344);
+	
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(104,98,139,1.00)";
+	
+	context.fill();
+	
+	////2
+	
+	context.beginPath();
+	
+	context.moveTo(177,353);
+	context.quadraticCurveTo(177,338,185,354);
+	context.quadraticCurveTo(207,348,186,358);
+	context.quadraticCurveTo(199,374,182,365);
+	context.quadraticCurveTo(176,373,178,359);
+	context.quadraticCurveTo(172,354,177,353);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(104,98,139,1.00)";
+	
+	context.fill();
+	
+	
+//Body
+	
+	///1
+	
+	context.beginPath();
+	
+	context.moveTo(118,324);
+	context.bezierCurveTo(125,290,204,252,167,326);
+	context.quadraticCurveTo(157,334,146,330);
+	context.lineTo(150,321);
+	context.quadraticCurveTo(134,330,125,328);
+	context.quadraticCurveTo(126,321,124,320);
+	context.lineTo(118,324);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,255,255,1)";
+	
+	context.fill();
+	
+	///2
+	
+	context.beginPath();
+	
+	context.moveTo(132,302);
+	context.bezierCurveTo(85,246,196,208,193,283);
+	context.quadraticCurveTo(179,284,174,290);
+	context.quadraticCurveTo(134,297,131,302);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,255,255,1)";
+	
+	context.fill();
+	
+//Head&Face
+	
+	///Head
+	
+	context.beginPath();
+	
+	context.moveTo(139,249);
+	context.bezierCurveTo(116,230,126,196,145,192);
+	context.quadraticCurveTo(141,203,151,211);
+	context.quadraticCurveTo(161,222,156,228);
+	context.quadraticCurveTo(164,227,166,218);
+	context.quadraticCurveTo(174,232,181,232);
+	context.bezierCurveTo(166,273,111,285,139,249);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle= "rgba(182,141,202,1.00)";
+	
+	context.fill();
+	
+	///Eye&Nose
+	
+	context.beginPath();
+	
+	context.moveTo(147,217);
+	context.bezierCurveTo(143,195,127,209,131,221);
+	context.bezierCurveTo(131,226,140,226,144.5,223);
+	context.quadraticCurveTo(141,220,147,217);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.stroke();
+	
+	context.fillStyle= "rgba(255,255,255,1.00)";
+	
+	context.fill();
+	
+	///Pupil
+	
+	context.beginPath();
+	
+	context.moveTo(145,211);
+	context.bezierCurveTo(139,207,137,224,144.5,223);
+	context.quadraticCurveTo(143,219,147,217);
+	
+
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle= "rgba(41,8,87,1.00)";
+	
+	context.fill();
+	
+	///Nostril
+	
+	context.beginPath();
+	
+	context.moveTo(150,219);
+	context.quadraticCurveTo(151,222,148,222);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Minor Detail1
+	
+	context.beginPath();
+	
+	context.moveTo(142,230);
+	context.quadraticCurveTo(146,222,155,226);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Minor Deatail2
+	
+	context.beginPath();
+	
+	context.moveTo(166,244);
+	context.quadraticCurveTo(160,252,151,247);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Minor Detail3
+	
+	context.beginPath();
+	
+	context.moveTo(163,250);
+	context.quadraticCurveTo(149,255,139,249);
+	
+	//context.closePath();
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///RightArm
+	
+	context.beginPath();
+	
+	context.moveTo(188,267);
+	context.bezierCurveTo(219,253,224,188,207,190);
+	context.quadraticCurveTo(194,186,185,194);
+	context.quadraticCurveTo(191,197,190,199);
+	context.bezierCurveTo(180,213,168,262,188,267);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.stroke();
+	
+	context.fillStyle= "rgba(182,141,202,1.00)";
+	
+	context.fill();
+	
+	
+	///Gem
+	
+	var mygrd4 = context.createRadialGradient(144,267,0.5,145,266,100);	
+	mygrd4.addColorStop(0, "rgba(157,0,204,1.00)");
+	mygrd4.addColorStop(0.125, "rgba(255,255,255,1)");
+	mygrd4.addColorStop(0.25, "rgba(167,0,247,1.00)");
+	
+	context.beginPath();
+	
+	context.moveTo(157,264);
+	context.bezierCurveTo(146,251,131,257,133,269);
+	context.bezierCurveTo(136,271,144,271,157,264)
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = mygrd4;
+	
+	context.fill();
+	
+	///Mouth
+	
+	context.beginPath();
+	
+	context.moveTo(139,236);
+	context.bezierCurveTo(137,252,178,243,168,227);
+	context.quadraticCurveTo(159,234,150,232);
+	context.quadraticCurveTo(142,238,139,236);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,252,252,1.00)";
+	
+	context.fill();
+	
+	////Teeth1
+	
+	context.beginPath();
+	
+	context.moveTo(159,232);
+	context.lineTo(165,240);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	////Teeth2
+	
+	context.beginPath();
+	
+	context.moveTo(145,236);
+	context.lineTo(149,244);
+	
+	context.closePath();
+	
+	context.lineWidth = 0.5;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+//Steven
+	
+//Hair
+	
+	context.beginPath();
+	
+	context.moveTo(190,263);
+	context.quadraticCurveTo(171,244,197,231);
+	context.quadraticCurveTo(201,198,232,215);
+	context.quadraticCurveTo(255,195,267,227);
+	context.quadraticCurveTo(287,238,270,262);
+	context.bezierCurveTo(262,290,166,299,190,263);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(28,11,2,1.00)";
+	
+	context.fill();
+	
+//Legs&Feet
+	
+	///Sandal1
+	
+	context.beginPath();
+	
+	context.moveTo(217,419);
+	context.quadraticCurveTo(180,428,165,416);
+	context.lineTo(164,411);
+	context.bezierCurveTo(187,381,212,403,219,414);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(245,69,108,1.00)";
+	
+	context.fill();
+	
+	///Sandal2
+	
+	context.beginPath();
+	
+	context.moveTo(249,417);
+	context.quadraticCurveTo(277,427,302,416);
+	context.lineTo(302,412);
+	context.bezierCurveTo(305,396,243,378,249,417);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(254,88,125,1.00)";
+	
+	context.fill();
+	
+	///Toe1
+	
+	context.beginPath();
+	
+	context.moveTo(162,409);
+	context.quadraticCurveTo(178,397,188,414);
+	context.quadraticCurveTo(182,418,176,415);
+	context.quadraticCurveTo(172,415,172,414);
+	context.quadraticCurveTo(166,413,168,413);
+	context.quadraticCurveTo(162,412,162,409);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	////MinorDetail1
+	
+	context.beginPath();
+	
+	context.moveTo(180,409);
+	context.quadraticCurveTo(175,411,176,415);
+	context.moveTo(176,407);
+	context.quadraticCurveTo(169,410,173,415);
+	context.moveTo(172,407)
+	context.quadraticCurveTo(167,408,168,413);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "0,0,0,1";
+	
+	context.stroke();
+	
+	///Toe2
+	
+	context.beginPath();
+	
+	context.moveTo(201,415);
+	context.bezierCurveTo(196,418,179,417,185,410);
+	context.bezierCurveTo(189,406,198,407,201,415);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	///Toe3
+	
+	context.beginPath();
+	
+	context.moveTo(279,413);
+	context.quadraticCurveTo(288,396,304,409);
+	context.quadraticCurveTo(302,412,300,412);
+	context.quadraticCurveTo(298,413,297,414);
+	context.quadraticCurveTo(292,414,291,415);
+	context.quadraticCurveTo(280,417,279,413);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	////Minor Detial 2
+	
+	context.beginPath();
+	
+	context.moveTo(288,408);
+	context.quadraticCurveTo(294,413,289,415);
+	context.moveTo(292,407);
+	context.quadraticCurveTo(297,411,294,414);
+	context.moveTo(296,407);
+	context.quadraticCurveTo(300,409,300,414);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "0,0,0,1";
+	
+	context.stroke();
+	
+	///Toe4
+	
+	context.beginPath();
+	
+	context.moveTo(284,413);
+	context.bezierCurveTo(280,417,261,417,268,412);
+	context.bezierCurveTo(268,409,281,404,284,413)
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	///Right Foot;
+	
+	context.beginPath();
+	
+	context.moveTo(221,400);
+	context.lineTo(218,412);
+	context.lineTo(210,413);
+	context.quadraticCurveTo(201,400,188,406);
+	context.quadraticCurveTo(183,399,175,399);
+	context.lineTo(183,395);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	///Left Foot
+	
+	context.beginPath();
+	
+	context.moveTo(286,395);
+	context.lineTo(292,399);
+	context.quadraticCurveTo(281,399,279,406);
+	context.quadraticCurveTo(261,400,258,414);
+	context.lineTo(250,413);
+	context.lineTo(249,401);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	///Pants1
+	
+	context.beginPath();
+	
+	context.moveTo(222,390);
+	context.lineTo(221,400);
+	context.quadraticCurveTo(192,406,183,394);
+	context.lineTo(185,386);
+	context.quadraticCurveTo(206,371,222,390);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(135,172,230,1.00)";
+	
+	context.fill();
+	
+	///Pants2
+	
+	context.beginPath();
+	
+	context.moveTo(286,388);
+	context.lineTo(286,397);
+	context.quadraticCurveTo(266,403,248,400);
+	context.lineTo(247,391);
+	context.quadraticCurveTo(269,373,286,388);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(135,172,230,1.00)";
+	
+	context.fill();
+	
+	///Pants3
+	
+	context.beginPath();
+	
+	context.moveTo(277,354);
+	context.lineTo(285,387);
+	context.quadraticCurveTo(261,393,247,390);
+	context.quadraticCurveTo(247,385,243,368);
+	context.quadraticCurveTo(236,370,227,368);
+	context.quadraticCurveTo(224,380,222,390);
+	context.quadraticCurveTo(199,393,185,386);
+	context.quadraticCurveTo(188,361,195,349);
+	context.bezierCurveTo(214,328,284,322,277,354)
+	
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(23,107,179,1.00)";
+	
+	context.fill();
+	
+	////Minor Detail1
+	
+	context.beginPath();
+	
+	context.moveTo(225,367);
+	context.quadraticCurveTo(234,370,253,367);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	////Minor Detail 2
+	
+	context.beginPath();
+	
+	context.moveTo(232,369);
+	context.quadraticCurveTo(238,366,238,351);
+	context.moveTo(243,369);
+	context.quadraticCurveTo(248,358,247,351);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,60,138,1.00)";
+	
+	context.stroke();
+	
+//Body
+	
+	///T-Shirt
+	
+	context.beginPath();
+	
+	context.moveTo(205,282);
+	context.bezierCurveTo(145,277,179,335,198,345);
+	context.quadraticCurveTo(240,356,279,346);
+	context.quadraticCurveTo(283,310,279,303);
+	context.bezierCurveTo(300,278,287,276,205,282);
+	
+	context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(254,88,125,1.00)";
+	
+	context.fill();
+	
+	////MinorDetail 1
+	
+	context.beginPath();
+	
+	context.closePath();
+	
+	context.moveTo(272,292);
+	context.lineTo(275,298);
+	
+	context.lineWidth = 0.8;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Star
+	
+	context.beginPath();
+    
+    context.moveTo(244,337);
+    context.quadraticCurveTo(220,354,230,329);
+    context.quadraticCurveTo(214, 311,236,316);
+    context.quadraticCurveTo(243, 290,252,316);
+    context.quadraticCurveTo(275, 314,258,329);
+    context.quadraticCurveTo(265, 351,244,337);
+    
+    context.closePath();
+    
+    context.fillStyle = "rgba(242,202,61,1.00)";
+    
+    context.fill();
+	
+//Ear
+	
+	context.beginPath();
+	
+	context.moveTo(201,261);
+	context.bezierCurveTo(191,258,195,278,203,279);
+	context.bezierCurveTo(211,285,214,265,201,261)
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1.75;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+//Face
+	
+	context.beginPath();
+	
+	context.moveTo(265,258);
+	context.bezierCurveTo(258,201,196,239,206,282);
+	context.bezierCurveTo(203,308,303,313,267,259);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+//Eyes
+	///Left Eye
+	
+	context.beginPath(); 
+	
+	context.moveTo(227,243);
+	context.bezierCurveTo(218,242,217,263,227,264);
+	context.bezierCurveTo(238,262,237,247,228,242);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,255,255,1.00)";
+	
+	context.fill();
+	
+	///Right Eye
+	
+	context.beginPath(); 
+	
+	context.moveTo(251,242);
+	context.bezierCurveTo(239,245,247,264,252,263);
+	context.bezierCurveTo(262,260,261,244,251,242);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(253,253,253,1.00)";
+	
+	context.fill();
+	
+	////Left Pupil
+	
+	context.beginPath(); 
+	
+	context.moveTo(229,248);
+	context.bezierCurveTo(227,248,224,255,229,259);
+	context.bezierCurveTo(233,258,233,252,229,248);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1.5;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(0,0,0,1.00)";
+	
+	context.fill();
+	
+	
+	////Left Pupil
+	
+	context.beginPath(); 
+	
+	context.moveTo(251,249);
+	context.bezierCurveTo(249,247,243,256,252,259);
+	context.bezierCurveTo(255,255,253,247,251,249);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1.5;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(0,0,0,1.00)";
+	
+	context.fill();
+	
+	
+	
+	//Mouth
+	
+	context.beginPath();
+	
+	context.moveTo(263,270);
+	context.bezierCurveTo(282,304,183,293,223,270);
+	context.quadraticCurveTo(231,276,258,270);
+	
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(255,255,255,1.00)";
+	
+	context.fill();
+	
+	//Teeth
+	
+	//1
+	context.beginPath();
+	
+	context.moveTo(226,289);
+	context.lineTo(227,273);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.lineWidth = 0.8;
+	
+	context.stroke();
+	
+	//2
+	
+	context.beginPath();
+	
+	context.moveTo(244,291);
+	context.lineTo(243,273);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.lineWidth = 0.8;
+	
+	context.stroke();
+	
+	//3
+	
+	context.beginPath();
+	
+	context.moveTo(258,287);
+	context.lineTo(257,271);
+	
+	context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.lineWidth = 0.8;
+	
+	context.stroke();
+	
+	//Nose
+	
+	context.beginPath();
+	
+	context.moveTo(246,266);
+	context.quadraticCurveTo(252,261,243,254);
+	
+	//context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.lineWidth = 0.8;
+	
+	context.stroke();
+	
+	//Nostril 1
+	
+	context.beginPath();
+	
+	context.moveTo(245,260);
+	context.quadraticCurveTo(243,263,243,266);
+	
+	//context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	//Nostril 2
+	
+	context.beginPath();
+	
+	context.moveTo(241,260);
+	context.quadraticCurveTo(242,260,240,266);
+	
+	//context.closePath();
+	
+	context.strokeStyle = "rgba(0,0,0,1)"
+	
+	context.lineWidth = 1;
+	
+	context.stroke();
+	
+	//Eyebrows
+	
+		///1
+	
+		context.beginPath();
+		context.arc(240,252,22,1.25*Math.PI,1.4*Math.PI,false);
+	
+		context.lineWidth = 7;
+    
+        context.strokeStyle = "rgba(0,0,0,1)";
+	
+		context.lineCap = "round";
+	
+		context.stroke();
+	
+		context.fillStyle = "rgba(28,11,2,1.00)";
+	
+		context.fill();
+	
+		///2
+	
+		context.beginPath();
+		context.arc(240,252,22,1.6*Math.PI,1.75*Math.PI,false);
+	
+		context.lineWidth = 7;
+    
+        context.strokeStyle = "rgba(0,0,0,1)";
+	
+		context.lineCap = "round";
+	
+		context.stroke();
+	
+		context.fillStyle = "rgba(28,11,2,1.00)";
+	
+		context.fill();
+	
+//Arm&Hands
+	
+	///Right Arm
+	
+	context.beginPath();
+	
+	context.moveTo(201,308);
+	context.bezierCurveTo(213,318,214,329,210,331);
+	context.quadraticCurveTo(209,338,205,338);
+	context.quadraticCurveTo(203,346,200,344);
+	context.quadraticCurveTo(191,355,183,337);
+	context.bezierCurveTo(160,328,145,303,181,287);
+	context.bezierCurveTo(187,285,202,296,201,308);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	////Minor Detail1
+	
+	context.beginPath();
+	
+	context.moveTo(184,337);
+	context.lineTo(189,343);
+	context.moveTo(195,303);
+	context.lineTo(203,310);
+	context.moveTo(198,339);
+	context.quadraticCurveTo(202,343,194,348);
+	context.moveTo(203,333);
+	context.quadraticCurveTo(205,334,205,340);
+	context.moveTo(208,328);
+	context.quadraticCurveTo(210,330,209,335);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	///Left Hand
+	
+	context.beginPath();
+	
+	context.moveTo(320,312);
+	context.bezierCurveTo(331,317,320,327,310,329);
+	context.quadraticCurveTo(295,337,282,325);
+	context.bezierCurveTo(261,312,278,284,288,291);
+	context.bezierCurveTo(287,246,313,268,298,294);
+	context.lineTo(303,296);
+	context.bezierCurveTo(320,249,335,277,314,300);
+	context.quadraticCurveTo(324,302,320,312);
+	
+	context.closePath();
+	
+	context.lineWidth = 1.2;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	context.fillStyle = "rgba(252,186,156,1.00)";
+	
+	context.fill();
+	
+	////Finger1
+	
+	context.beginPath();
+	
+	context.moveTo(307,304);
+	context.bezierCurveTo(277,319,315,325,321,311);
+
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	////Finger2
+	
+	context.beginPath();
+	
+	context.moveTo(283,303);
+	context.bezierCurveTo(306,317,307,300,289,291);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	////Finger3
+
+	context.beginPath();
+	
+	context.moveTo(303,319);
+	context.quadraticCurveTo(300,327,313,329);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+	
+	////Minor Detail
+	
+	context.beginPath();
+	
+	context.moveTo(291,324);
+	context.quadraticCurveTo(286,326,281,324);
+	
+	//context.closePath();
+	
+	context.lineWidth = 1;
+	
+	context.strokeStyle = "rgba(0,0,0,1)";
+	
+	context.stroke();
+
+ 
+
+// <<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE<<<END HERE
+///////////////////////////////////////////////////////////////////
+
+// CREDITS
+
+context.save();
+var credits = "Christian Carranza, We Are The Crystal Gems, FMX 210, FA 2020";
+context.font = 'bold 12px Helvetica';
+context.fillStyle = "rgba(0,0,0,1)"; // change the color here
+context.shadowColor = "rgba(255,255,255,1)"; // change shadow color here
+context.shadowBlur = 12;
+context.shadowOffsetX = 2;
+context.shadowOffsetY = 2;
+context.fillText(credits, 10, canvas.height - 10); // CHANGE THE LOCATION HERE
+context.restore();
+
+//////////////////////////////////////////////////////////////////
+// HTML DISPLAY FIELD FOR TESTING PURPOSES
+
+display.innerHTML = Math.round(mouseX) + " || " + Math.round(mouseY) + " || counter = " + Math.round(counter);
+
+/////////////////////////////////////////////////////////////////
+// LAST LINE CREATES THE ANIMATION
+
+requestAnimFrame(draw); // CALLS draw() every nth of a second
+
+}
+
+</script>
+
+</body>
+</html>
